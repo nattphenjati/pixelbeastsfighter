@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pixel Beasts Fighter</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+  <body>
+
+    <div id="app">
+
+      <div class="login-wrapper hide" id="modalLogin">
+        <h1>PIXELBEASTS<br>FIGHTER</h1>
+        <button class="button btn-primary" id="connectButton" disabled></button>
+        <button class="button btn-primary" id="getAccounts">START GAME</button>
+        <p class="info-text alert alert-secondary hide">eth_accounts result: <span id="getAccountsResult"></span></p>
+      </div>
+
+      <div class="game-wrapper">
+        <section class="players">
+          <div class="player player-1">
+            <h3>PB#<span id="shortName">{{beastID}}<!-- Remove Later --></span></h3>
+            <div class="player-image">
+              <img src="images/frame.svg" class="img-frame" alt="frame"><br>
+              <img :src="beastPicture" class="img-player" id="pbImage"><!-- Remove Later --><br>
+            </div>
+            <div class="hp">
+              <div class="hp-amount"></div>
+            </div>
+          </div>
+          <div class="vs">
+            VS
+          </div>
+          <div class="player player-2">
+            <h3>BN#372</h3>
+            <transition name="get-hit" mode="out-in">
+              <div class="player-image" :key="enemyHP">
+                <img src="images/frame.svg" class="img-frame" alt="frame"><br>
+                <img src="images/bn372.png" class="img-player" alt="player" v-show="!youWin">
+                <img src="images/player_ko.svg" class="img-player" alt="player" id="playerKO" v-show="youWin">
+                <br>
+              </div>
+            </transition>
+            <div class="hp">
+              <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div>
+            </div>
+          </div>
+          <div class="clear">
+          </div>
+          <img src="images/pointer.svg">
+        </section>
+
+        <section class="control">
+          <h1 id="fullName">PB#{{beastID}}</h1><!-- Remove Later -->
+          <span>HP:<span id="beastHP">{{maxHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span><!-- Remove Later -->
+          <button class="button btn-primary" v-on:click="beastAttack()">FIGHT</button>
+          <button class="button btn-primary">SKILL</button>
+          <button class="button btn-primary">BLOCK</button>
+          <a href="index.html">
+            <button class="button btn-primary">RUN</button>
+          </a>
+        </section>
+      </div>
+
+    </div>
+
+
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Add Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.5"></script>
+    <script src="js/app.js"></script>
+    <!-- End Add Vue.js -->
+
+  </body>
+</html>
