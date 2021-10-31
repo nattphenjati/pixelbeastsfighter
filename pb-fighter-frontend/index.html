@@ -7,6 +7,7 @@
     <title>Pixel Beasts Fighter</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/extra.css">
 
 </head>
   <body>
@@ -23,12 +24,11 @@
       <div class="game-wrapper">
         <section class="players">
           <div class="player player-1">
-            <h3>PB#<span id="shortName">{{beastID}}<!-- Remove Later --></span></h3>
+            <h3>PB#<span id="shortName">{{beastID}}<!-- Change Later --></span></h3>
             <transition name="get-hit" mode="out-in">
               <div class="player-image" :key="yourHP">
                 <img src="images/frame.svg" class="img-frame" alt="frame"><br>
-                <img :src="beastPicture" class="img-player" id="pbImage" v-show="!youLose"><!-- Remove Later -->
-                <img src="images/player_ko.svg" class="img-player" alt="player" v-show="youLose">
+                <img :src="beastPicture" class="img-player" id="pbImage"><!-- Change Later -->
                 <br>
               </div>
             </transition>
@@ -40,17 +40,16 @@
             VS
           </div>
           <div class="player player-2">
-            <h3>BN#372</h3>
+            <h3>PB#{{enemyID}}</h3><!-- Change Later -->
             <transition name="get-hit" mode="out-in">
               <div class="player-image" :key="enemyHP">
                 <img src="images/frame.svg" class="img-frame" alt="frame"><br>
-                <img src="images/bn372.png" class="img-player" alt="player" v-show="!youWin">
-                <img src="images/player_ko.svg" class="img-player" alt="player" v-show="youWin">
+                <img :src="enemyPicture" class="img-player" alt="player">
                 <br>
               </div>
             </transition>
             <div class="hp">
-              <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div>
+              <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div><!-- Change Later -->
             </div>
           </div>
           <div class="clear">
@@ -59,8 +58,8 @@
         </section>
 
         <section class="control">
-          <h1 id="fullName">PB#{{beastID}}</h1><!-- Remove Later -->
-          <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span><!-- Remove Later -->
+          <h1 id="fullName">PB#{{beastID}}</h1><!-- Change Later -->
+          <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span><!-- Change Later -->
           <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">FIGHT</button>
           <button class="button btn-primary" :disabled="isDisabled">SKILL</button>
           <button class="button btn-primary" :disabled="isDisabled">BLOCK</button>
