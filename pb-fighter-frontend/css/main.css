@@ -7402,6 +7402,7 @@ fieldset[disabled] .btn-primary.active {
 .get-hit-enter,
 .get-hit-leave-to {
   transform: translateX(5px);
+  opacity: 0;
 }
 /*---Responsive (Bootstrap Standard)---*/
 /* Only Large devices (LG) */

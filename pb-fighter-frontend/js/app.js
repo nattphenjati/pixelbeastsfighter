@@ -27,14 +27,16 @@ const app = Vue.createApp({
         this.youWin = true
         this.isDisabled = true
         console.log("You Win")
+      } else {
+        setTimeout(() => {
+          this.enemyAttack()
+        }, 500)
       }
-      setTimeout(() => {
-        this.enemyAttack()
-      }, 500)
     },
     enemyAttack() {
       console.log("Enemy Attact Back")
-      this.currentHP -= 10
+      this.numberATK = Math.floor(Math.random()*(this.maxATK-this.minATK+1)+this.minATK);
+      this.currentHP -= this.numberATK
       this.yourHP = (this.currentHP/this.maxHP)*100
       this.isDisabled = false
       if (this.yourHP <= 0){
