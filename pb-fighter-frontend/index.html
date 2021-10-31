@@ -23,8 +23,26 @@
 
       <div class="game-wrapper">
         <section class="players">
+
+          <div class="player player-2">
+            <h3>PB#{{enemyID}}</h3><!-- Change Later -->
+            <div class="enemy_stat_bar">
+              <img class="hp_label" src="images/hp_label.svg">
+              <div class="hp">
+                <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div><!-- Change Later -->
+              </div>
+            </div>
+            <transition name="get-hit" mode="out-in">
+              <div class="enemy-image" :key="enemyHP">
+                <img src="images/frame_small.svg" class="img-frame" alt="frame">
+                <img :src="enemyPicture" class="img-player" alt="player">
+                <br>
+              </div>
+            </transition>
+            <div class="clear"></div>
+          </div>
+
           <div class="player player-1">
-            <h3>PB#<span id="shortName">{{beastID}}<!-- Change Later --></span></h3>
             <transition name="get-hit" mode="out-in">
               <div class="player-image" :key="yourHP">
                 <img src="images/frame.svg" class="img-frame" alt="frame"><br>
@@ -32,36 +50,25 @@
                 <br>
               </div>
             </transition>
-            <div class="hp">
-              <div class="hp-amount" :style="{ width: yourHP + '%' }" v-show="!youLose"></div>
-            </div>
-          </div>
-          <div class="vs">
-            VS
-          </div>
-          <div class="player player-2">
-            <h3>PB#{{enemyID}}</h3><!-- Change Later -->
-            <transition name="get-hit" mode="out-in">
-              <div class="player-image" :key="enemyHP">
-                <img src="images/frame.svg" class="img-frame" alt="frame"><br>
-                <img :src="enemyPicture" class="img-player" alt="player">
-                <br>
+            <h3>PB#<span id="shortName">{{beastID}}<!-- Change Later --></span></h3>
+            <div class="stat_bar">
+              <img class="hp_label" src="images/hp_label.svg">
+              <div class="hp">
+                <div class="hp-amount" :style="{ width: yourHP + '%' }" v-show="!youLose"></div>
               </div>
-            </transition>
-            <div class="hp">
-              <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div><!-- Change Later -->
             </div>
           </div>
+
+
           <div class="clear">
           </div>
-          <img src="images/pointer.svg">
         </section>
 
         <section class="control">
-          <h1 id="fullName">PB#{{beastID}}</h1><!-- Change Later -->
-          <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span><!-- Change Later -->
+          <!-- <h1 id="fullName">PB#{{beastID}}</h1>
+          <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span> -->
+          <h2>What will you do?</h2>
           <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">FIGHT</button>
-          <button class="button btn-primary" :disabled="isDisabled">SKILL</button>
           <button class="button btn-primary" :disabled="isDisabled">BLOCK</button>
           <a href="index.html">
             <button class="button btn-primary">RESTART</button>

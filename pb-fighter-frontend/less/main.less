@@ -26,6 +26,12 @@ h1{
   margin-top: 0px;
   margin-bottom: 0px;
 }
+h2{
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px 0px #000000;
+}
 h3{
   font-size: 16px;
   margin-top: 0px;
@@ -62,7 +68,9 @@ h3{
 
 /*---game-wrapper---*/
 .game-wrapper{
-  background: #000000;
+  background: url(../images/bg_game.png);
+  background-position: right top;
+  background-size: contain;
   height: 600px;
   width: 375px;
   display: block;
@@ -72,17 +80,13 @@ h3{
 /*---Section:Players---*/
 .players{
   color: #000000;
-  text-align: center;
-  background-image: url(../images/bg_players.png);
   .player{
-    text-align: center;
     padding-top: 20px;
     float:left;
     .player-image{
+      float: left;
       width: 148px;
       height: 148px;
-      margin-top: 6px;
-      margin-bottom: 10px;
       position: relative;
       .img-frame{
         position: absolute;
@@ -91,15 +95,64 @@ h3{
         z-index: 2;
       }
       .img-player{
-        position: relative;
-        width: 128px;
-        height: 128px;
-        transform: translateY(-8px);
+        position: absolute;
+        width: 124px;
+        height: 124px;
+        z-index: 1;
+        top: 12px;
+        left: 12px;
       }
     }
+    .stat_bar{
+      background-image: url(../images/stat_bar.svg);
+      display: block;
+      float: right;
+      width: 210px;
+      height: 56px;
+      margin-top: 6px;
+      padding-top: 16px;
+      padding-left: 24px;
+    }
+    .enemy-image{
+      float: right;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin-left: 16px;
+      margin-top: -16px;
+      .img-frame{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
+      .img-player{
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 1;
+        width: 76px;
+        height: 76px;
+      }
+    }
+    .enemy_stat_bar{
+      background-image: url(../images/enemy_stat_bar.svg);
+      display: block;
+      float: left;
+      width: 245px;
+      height: 56px;
+      margin-top: 6px;
+      padding-top: 16px;
+      padding-left: 24px;
+    }
+    .hp_label{
+      float: left;
+      margin-top: 7px;
+      margin-right: 4px;
+    }
     .hp{
-      margin: auto;
       text-align: left;
+      float: left;
       padding: 4px;
       width: 136px;
       height: 26px;
@@ -119,8 +172,22 @@ h3{
     }
   }
   .player-1{
-    margin-left: 14px;
-    margin-bottom: 15px;
+    margin-left: 12px;
+    h3{
+      margin-top: 24px;
+      margin-right: 44px;
+      float: right;
+    }
+    .hp_label{
+      margin-left: 12px;
+    }
+  }
+  .player-2{
+    h3{
+      font-size: 14px;
+      margin-top: 8px;
+      margin-left: 20px;
+    }
   }
   .vs{
     float:left;
@@ -131,13 +198,14 @@ h3{
 
 /*---Section:Control---*/
 .control{
-  margin: 20px 40px;
-  h1{
-    margin-bottom: 10px;
+  margin: 64px 32px;
+  text-align: center;
+  h2{
+    margin-bottom: 20px;
   }
   .button{
     width: 100%;
-    margin-top: 15px;
+    margin-bottom: 16px;
   }
 }
 
@@ -146,8 +214,19 @@ h3{
   &:extend(.btn all);
   .button-variant(#ffffff, #000000, #ffffff);
   border-radius: 0px;
+  box-shadow: 0px 4px 0px #000000;
   border: 3px solid;
   padding:10px 0px 8px 0px;
+}
+.btn-primary:hover{
+  .button-variant(#ffffff, #222222, #ffffff);
+  opacity: 1;
+  box-shadow: 0px 4px 0px #000000;
+}
+.btn-primary:disabled{
+  .button-variant(#ffffff, #222222, #ffffff);
+  opacity: 1;
+  box-shadow: 0px 4px 0px #000000;
 }
 
 /*---Vue Animation--*/
