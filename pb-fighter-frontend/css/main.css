@@ -7172,6 +7172,7 @@ body {
   font-family: 'Press Start 2P', cursive;
   background: #E5E5E5;
   position: relative;
+  transform-origin: 0 0;
 }
 h1 {
   font-size: 20px;
