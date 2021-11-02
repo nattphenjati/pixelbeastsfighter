@@ -69,11 +69,14 @@
           <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span> -->
           <h2>What will you do?</h2>
           <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">FIGHT</button>
-          <button class="button btn-primary" :disabled="isDisabled">BLOCK</button>
+          <button class="button btn-primary" v-on:click="getUser()" :disabled="isDisabled">BLOCK</button>
           <a href="index.html">
             <button class="button btn-primary">RESTART</button>
           </a>
         </section>
+      </div>
+      <div>
+        {{data}}
       </div>
 
     </div>

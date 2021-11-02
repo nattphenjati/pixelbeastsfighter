@@ -23,9 +23,18 @@ const app = Vue.createApp({
       isDisabled: false,
       youWin: false,
       youLose: false,
+      data: 'Hello World',
     }
   },
   methods: {
+    async getUser(){
+      //https://www.pixelbeasts.xyz/token/1082
+      //https://randomuser.me/api
+      const res = await fetch('https://www.pixelbeasts.xyz/token/1082')
+      const { results } = await res.json()
+      console.log(results)
+      this.data = 'Check Code'
+    },
     beastAttack() {
       this.pureATK = Math.floor(Math.random()*(this.maxATK-this.minATK+1)+this.minATK);
       console.log("Your Attack = " + this.pureATK)
