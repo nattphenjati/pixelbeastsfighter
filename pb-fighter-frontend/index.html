@@ -27,10 +27,10 @@
           <div class="player player-2">
             <h3>PB#{{enemyID}}</h3><!-- Change Later -->
             <div class="enemy_stat_bar">
-              <img class="hp_label" src="images/hp_label.svg">
               <div class="hp">
                 <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div><!-- Change Later -->
               </div>
+              <span>HP:<strong>{{enemyCurrentHP}}</strong></span><span></span><span>ATK:<strong>{{enemyMaxATK}}</strong></span>
             </div>
             <transition name="get-hit" mode="out-in">
               <div class="enemy-image" :key="enemyHP">
@@ -52,10 +52,10 @@
             </transition>
             <h3>PB#<span id="shortName">{{beastID}}<!-- Change Later --></span></h3>
             <div class="stat_bar">
-              <img class="hp_label" src="images/hp_label.svg">
               <div class="hp">
                 <div class="hp-amount" :style="{ width: yourHP + '%' }" v-show="!youLose"></div>
               </div>
+              <span>HP:<strong>{{currentHP}}</strong></span><span></span><span>ATK:<strong>{{maxATK}}</strong></span>
             </div>
           </div>
 
@@ -65,8 +65,6 @@
         </section>
 
         <section class="control">
-          <!-- <h1 id="fullName">PB#{{beastID}}</h1>
-          <span>HP:<span id="beastHP">{{currentHP}}/{{maxHP}}</span>&nbsp;SP:<span id="beastSP"></span>{{maxSP}}/{{maxSP}}</span> -->
           <h2>What will you do?</h2>
           <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">FIGHT</button>
           <button class="button btn-primary" v-on:click="getUser()" :disabled="isDisabled">BLOCK</button>
@@ -75,7 +73,7 @@
           </a>
         </section>
       </div>
-      <div>
+      <div class="console">
         {{data}}
       </div>
 

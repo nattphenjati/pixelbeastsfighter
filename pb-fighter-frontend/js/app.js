@@ -20,20 +20,30 @@ const app = Vue.createApp({
       enemyMaxATK: 15,
       enemyHP: 100,
       //General Data
+      minID: 1000,
+      maxID: 8000,
       isDisabled: false,
       youWin: false,
       youLose: false,
+      enemyData: [],
       data: 'Hello World',
     }
   },
   methods: {
     async getUser(){
-      //https://www.pixelbeasts.xyz/token/1082
-      //https://randomuser.me/api
-      const res = await fetch('https://www.pixelbeasts.xyz/token/1082')
-      const { results } = await res.json()
-      console.log(results)
-      this.data = 'Check Code'
+      this.enemyID = Math.floor(Math.random()*(this.maxID-this.minID+1)+this.minID);
+      const options = {method: 'GET'};
+      fetch('https://api.opensea.io/api/v1/asset/0xd539a3a5edb713e6587e559a9d007ffff92bd9ab/'+this.enemyID, options)
+        .then(response => response.json())
+        // .then(response => console.log(response))
+        .then(response => this.enemyData.push(response))
+        .then(response => this.data = this.enemyData[0].token_id)
+        .then(response => this.enemyID = this.enemyData[0].token_id)
+        .then(response => this.enemyPicture = this.enemyData[0].image_url)
+        .then(response => this.enemyCurrentHP = this.enemyData[0].traits[1].value*10)
+        .then(response => this.enemyMaxHP = this.enemyData[0].traits[1].value*10)
+        .then(response => this.enemyMaxATK = this.enemyData[0].traits[4].value)
+        .catch(err => console.error(err))
     },
     beastAttack() {
       this.pureATK = Math.floor(Math.random()*(this.maxATK-this.minATK+1)+this.minATK);

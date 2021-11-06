@@ -7167,12 +7167,16 @@ button.close {
   src: url(https://fonts.gstatic.com/s/pressstart2p/v9/e3t4euO8T-267oIAQAu6jDQyK0nS.ttf) format('truetype');
 }
 /*---General Setting---*/
+html {
+  height: 100%;
+}
 body {
   color: #ffffff;
   font-family: 'Press Start 2P', cursive;
-  background: #E5E5E5;
+  background: #000000;
+  height: 100%;
   position: relative;
-  transform-origin: 0 0;
+  text-align: center;
 }
 h1 {
   font-size: 20px;
@@ -7189,6 +7193,10 @@ h3 {
   font-size: 16px;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+strong {
+  color: #FFDF00;
+  font-weight: normal;
 }
 .clear {
   clear: both;
@@ -7225,7 +7233,11 @@ h3 {
   height: 600px;
   width: 375px;
   display: block;
-  margin: 30px auto;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-align: left;
   overflow: hidden;
 }
 /*---Section:Players---*/
@@ -7263,8 +7275,13 @@ h3 {
   width: 210px;
   height: 56px;
   margin-top: 6px;
-  padding-top: 16px;
-  padding-left: 24px;
+  padding-top: 10px;
+  padding-left: 48px;
+  color: #ffffff;
+  font-size: 11px;
+}
+.players .player .stat_bar span {
+  margin-left: 4px;
 }
 .players .player .enemy-image {
   float: right;
@@ -7295,26 +7312,27 @@ h3 {
   width: 245px;
   height: 56px;
   margin-top: 6px;
-  padding-top: 16px;
-  padding-left: 24px;
+  padding-top: 10px;
+  padding-left: 20px;
+  color: #FFFFFF;
+  font-size: 11px;
 }
-.players .player .hp_label {
-  float: left;
-  margin-top: 7px;
-  margin-right: 4px;
+.players .player .enemy_stat_bar span {
+  margin-left: 4px;
 }
 .players .player .hp {
   text-align: left;
   float: left;
+  margin-bottom: 4px;
   padding: 4px;
-  width: 136px;
-  height: 26px;
+  width: 140px;
+  height: 16px;
   display: block;
   background-image: url(../images/player_hp_bar.svg);
 }
 .players .player .hp .hp-amount {
   background-image: url(../images/player_hp.svg);
-  height: 18px;
+  height: 8px;
   width: 100%;
   display: block;
 }
@@ -7670,6 +7688,16 @@ fieldset[disabled] .btn-primary:disabled.active {
 .get-hit-leave-to {
   transform: translateX(5px);
   opacity: 0;
+}
+/*---Console---*/
+.console {
+  z-index: -1;
+  position: absolute;
+  right: 50%;
+  width: 375px;
+  transform: translateX(50%);
+  padding-bottom: 40px;
+  bottom: 0;
 }
 /*---Responsive (Bootstrap Standard)---*/
 /* Only Large devices (LG) */
