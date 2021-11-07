@@ -14,28 +14,34 @@
 
     <div id="app">
 
-      <div class="login-wrapper hide" id="modalLogin">
+      <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
         <h1>PIXELBEASTS<br>FIGHTER</h1>
-        <button class="button btn-primary" id="connectButton" disabled></button>
+        <input v-model="yourID" placeholder="ENTER 4-DIGITS ID" maxlength="4">
+        <p><strong>{{loginError}}</strong></p>
+        <button class="button btn-primary" v-on:click="startGame()">{{startButton}}</button>
+        <!-- <button class="button btn-primary" id="connectButton" disabled></button>
         <button class="button btn-primary" id="getAccounts">START GAME</button>
-        <p class="info-text alert alert-secondary hide">eth_accounts result: <span id="getAccountsResult"></span></p>
+        <p class="info-text alert alert-secondary hide">eth_accounts result: <span id="getAccountsResult"></span></p> -->
       </div>
 
       <div class="game-wrapper">
+        <div class="win-counter">
+          ROUND:<strong>{{roundCounter}}</strong>
+        </div>
         <section class="players">
 
           <div class="player player-2">
-            <h3>PB#{{enemyID}}</h3><!-- Change Later -->
+            <h3>PB#{{enemyID}}</h3>
             <div class="enemy_stat_bar">
               <div class="hp">
-                <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div><!-- Change Later -->
+                <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div>
               </div>
               <span>HP:<strong>{{enemyCurrentHP}}</strong></span><span></span><span>ATK:<strong>{{enemyMaxATK}}</strong></span>
             </div>
             <transition name="get-hit" mode="out-in">
               <div class="enemy-image" :key="enemyHP">
                 <img src="images/frame_small.svg" class="img-frame" alt="frame">
-                <img :src="enemyPicture" class="img-player" alt="player">
+                <img :src="enemyPicture" class="img-player">
                 <br>
               </div>
             </transition>
@@ -46,11 +52,11 @@
             <transition name="get-hit" mode="out-in">
               <div class="player-image" :key="yourHP">
                 <img src="images/frame.svg" class="img-frame" alt="frame"><br>
-                <img :src="beastPicture" class="img-player" id="pbImage"><!-- Change Later -->
+                <img :src="yourPicture" class="img-player" id="pbImage">
                 <br>
               </div>
             </transition>
-            <h3>PB#<span id="shortName">{{beastID}}<!-- Change Later --></span></h3>
+            <h3>PB#<span id="shortName">{{yourID}}</span></h3>
             <div class="stat_bar">
               <div class="hp">
                 <div class="hp-amount" :style="{ width: yourHP + '%' }" v-show="!youLose"></div>
@@ -65,16 +71,14 @@
         </section>
 
         <section class="control">
-          <h2>What will you do?</h2>
-          <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">FIGHT</button>
-          <button class="button btn-primary" v-on:click="getUser()" :disabled="isDisabled">BLOCK</button>
-          <a href="index.html">
-            <button class="button btn-primary">RESTART</button>
-          </a>
+          <h2>{{controlText}}</h2>
+          <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">ATTACK<strong>{{xATK}}</strong></button>
+          <button class="button btn-primary" v-on:click="beastCharge()" :disabled="isDisabled">CHARGE</button>
+          <button class="button btn-primary" v-on:click="getNewEnemy()">{{restartButton}}</button>
         </section>
       </div>
-      <div class="console">
-        {{data}}
+      <div class="console hide">
+        {{data}} {{yourID.length}}
       </div>
 
     </div>

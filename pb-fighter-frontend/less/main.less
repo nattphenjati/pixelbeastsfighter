@@ -55,18 +55,31 @@ strong{
 /*---login-wrapper---*/
 .login-wrapper{
   position: absolute;
+  top: 50%;
   right: 50%;
   z-index: 9;
   background: #000000;
-  height: 600px;
+  height: 624px;
   width: 375px;
   display: block;
   overflow: hidden;
   text-align: center;
-  transform: translate(50%, 0%);
-  padding: 240px 40px 0px 40px;
+  transform: translate(50%, -50%);
+  padding: 180px 40px 0px 40px;
   h1{
     line-height: 30px;
+  }
+  border: 3px solid #ffffff;
+  input{
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    padding: 10px;
+    margin-top: 60px;
+  }
+  p{
+    margin-top: 15px;
+    font-size: 12px;
   }
   button{
     width: 100%;
@@ -79,7 +92,7 @@ strong{
   background: url(../images/bg_game.png);
   background-position: right top;
   background-size: contain;
-  height: 600px;
+  height: 624px;
   width: 375px;
   display: block;
   position: absolute;
@@ -88,6 +101,13 @@ strong{
   transform: translate(50%, -50%);
   text-align: left;
   overflow: hidden;
+  .win-counter{
+    text-align: center;
+    background: #17262C;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 7px;
+  }
 }
 /*---Section:Players---*/
 .players{
@@ -216,14 +236,15 @@ strong{
 
 /*---Section:Control---*/
 .control{
-  margin: 64px 32px;
+  margin: 56px 32px;
   text-align: center;
   h2{
+    font-size: 16px;
     margin-bottom: 20px;
   }
   .button{
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 }
 
@@ -242,7 +263,7 @@ strong{
   box-shadow: 0px 4px 0px #000000;
 }
 .btn-primary:disabled{
-  .button-variant(#ffffff, #222222, #ffffff);
+  .button-variant(#777777, #222222, #ffffff);
   opacity: 1;
   box-shadow: 0px 4px 0px #000000;
 }
@@ -260,6 +281,7 @@ strong{
   opacity: 0;
 }
 
+
 /*---Console---*/
 .console{
   z-index: -1;
@@ -267,8 +289,9 @@ strong{
   right: 50%;
   width: 375px;
   transform: translateX(50%);
-  padding-bottom: 40px;
-  bottom: 0;
+
+  padding-top: 30px;
+  top: 0;
 }
 
 /*---Responsive (Bootstrap Standard)---*/
