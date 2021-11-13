@@ -25,8 +25,7 @@
   "homepage": "",
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
-    "node-fetch": "^3.0.0",
-    "yarn": "^1.22.17"
+    "node-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@metamask/eslint-config": "^2.0.0",

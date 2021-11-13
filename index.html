@@ -26,6 +26,9 @@
             <!-- <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button> -->
           </div>
         </div>
+        <div class="version">
+          V.1.0
+        </div>
       </div>
 
       <div class="game-wrapper">
@@ -43,7 +46,7 @@
               <span>HP:<strong>{{enemyCurrentHP}}</strong></span><span></span><span>ATK:<strong>{{enemyMaxATK}}</strong></span>
             </div>
             <transition name="get-hit" mode="out-in">
-              <div class="enemy-image" :key="enemyHP">
+              <div class="enemy-image" :key="yourAttackCounter">
                 <img src="images/frame_small.svg" class="img-frame" alt="frame">
                 <img :src="enemyPicture" class="img-player">
                 <br>
@@ -54,7 +57,7 @@
 
           <div class="player player-1">
             <transition name="get-hit" mode="out-in">
-              <div class="player-image" :key="yourHP">
+              <div class="player-image" :key="enemyAttackCounter">
                 <img src="images/frame.svg" class="img-frame" alt="frame"><br>
                 <img :src="yourPicture" class="img-player" id="pbImage">
                 <br>
