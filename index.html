@@ -16,26 +16,17 @@
 
 
       <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
-        <h1><strong>PIXELBEASTS<br>FIGHTER</strong></h1>
-
-        <button class="button btn-primary hide" v-on:click="startGame()">{{startButton}}</button>
-        <div class="beast-selection">
-          <p>SELECT YOUR PIXELBEAST:</p>
-          <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button>
-          <button class="button btn-primary" id="5687" v-on:click="startGame()" :disabled="isDisabled">PB#5678</button>
-        </div>
-        <!-- <button class="button btn-primary" id="connectButton" disabled></button>
-        <button class="button btn-primary" id="getAccounts">START GAME</button>
-        <p class="info-text alert alert-secondary hide">eth_accounts result: <span id="getAccountsResult"></span></p> -->
-      </div>
-
-      <!-- MANUAL LOGIN - NO METAMASK -->
-      <!-- <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
+        <img src="images/pb-logo.gif" class="logo-image">
         <h1>PIXELBEASTS<br>FIGHTER</h1>
-        <input v-model="yourID" placeholder="ENTER 4-DIGITS ID" maxlength="4">
-        <p><strong>{{loginError}}</strong></p>
-        <button class="button btn-primary" v-on:click="startGame()">{{startButton}}</button>
-      </div> -->
+        <button class="button btn-primary" id="connectButton" disabled>LOADING..</button>
+        <p class="hide">eth_accounts result: <span id="getAccountsResult"></span></p>
+        <div class="beast-selection">
+          <p id="login-message"></p>
+          <div id="beast-select" v-on:click="startGame()" :class="{ loading: isLoading }">
+            <!-- <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button> -->
+          </div>
+        </div>
+      </div>
 
       <div class="game-wrapper">
         <div class="win-counter">
@@ -90,22 +81,24 @@
           <button class="button btn-primary" v-on:click="getNewEnemy()">{{restartButton}}</button>
         </section>
       </div>
-      <div class="console">
+      <div class="console hide">
         {{yourID}} {{yourID.length}}
       </div>
 
     </div>
 
 
-
-
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
     <!-- Add Vue.js -->
     <script src="https://unpkg.com/vue@next"></script>
     <script src="js/app.js"></script>
     <!-- End Add Vue.js -->
+
+    <!-- Add Metamask -->
+    <script src="node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" defer></script>
+    <script src="contract.js" defer></script>
+    <!-- End Add Metamask -->
 
   </body>
 </html>
