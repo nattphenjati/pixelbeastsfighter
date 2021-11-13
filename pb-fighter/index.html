@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PixelBeasts Fighter</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/extra.css">
+
+</head>
+  <body>
+
+    <div id="app">
+
+
+      <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
+        <img src="images/pb-logo.gif" class="logo-image">
+        <h1>PIXELBEASTS<br>FIGHTER</h1>
+        <button class="button btn-primary" id="connectButton" disabled>LOADING..</button>
+        <p class="hide">eth_accounts result: <span id="getAccountsResult"></span></p>
+        <div class="beast-selection">
+          <p id="login-message"></p>
+          <div id="beast-select" v-on:click="startGame()" :class="{ loading: isLoading }">
+            <!-- <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="game-wrapper">
+        <div class="win-counter">
+          ROUND:<strong>{{roundCounter}}</strong>
+        </div>
+        <section class="players">
+
+          <div class="player player-2">
+            <h3>PB#{{enemyID}}</h3>
+            <div class="enemy_stat_bar">
+              <div class="hp">
+                <div class="hp-amount" :style="{ width: enemyHP + '%' }" v-show="!youWin"></div>
+              </div>
+              <span>HP:<strong>{{enemyCurrentHP}}</strong></span><span></span><span>ATK:<strong>{{enemyMaxATK}}</strong></span>
+            </div>
+            <transition name="get-hit" mode="out-in">
+              <div class="enemy-image" :key="enemyHP">
+                <img src="images/frame_small.svg" class="img-frame" alt="frame">
+                <img :src="enemyPicture" class="img-player">
+                <br>
+              </div>
+            </transition>
+            <div class="clear"></div>
+          </div>
+
+          <div class="player player-1">
+            <transition name="get-hit" mode="out-in">
+              <div class="player-image" :key="yourHP">
+                <img src="images/frame.svg" class="img-frame" alt="frame"><br>
+                <img :src="yourPicture" class="img-player" id="pbImage">
+                <br>
+              </div>
+            </transition>
+            <h3>PB#<span id="shortName">{{yourID}}</span></h3>
+            <div class="stat_bar">
+              <div class="hp">
+                <div class="hp-amount" :style="{ width: yourHP + '%' }" v-show="!youLose"></div>
+              </div>
+              <span>HP:<strong>{{currentHP}}</strong></span><span></span><span>ATK:<strong>{{maxATK}}</strong></span>
+            </div>
+          </div>
+
+
+          <div class="clear">
+          </div>
+        </section>
+
+        <section class="control">
+          <h2>{{controlText}}</h2>
+          <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">ATTACK<strong>{{xATK}}</strong></button>
+          <button class="button btn-primary" v-on:click="beastCharge()" :disabled="isDisabled">CHARGE</button>
+          <button class="button btn-primary" v-on:click="getNewEnemy()">{{restartButton}}</button>
+        </section>
+      </div>
+      <div class="console hide">
+        {{yourID}} {{yourID.length}}
+      </div>
+
+    </div>
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Add Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/app.js"></script>
+    <!-- End Add Vue.js -->
+
+    <!-- Add Metamask -->
+    <script src="node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" defer></script>
+    <script src="contract.js" defer></script>
+    <!-- End Add Metamask -->
+
+  </body>
+</html>

@@ -60,6 +60,17 @@ const initialize = () => {
       // Will open the MetaMask UI
       // You should disable this button while the request is pending!
       await ethereum.request({ method: 'eth_requestAccounts' });
+      alert('test');
+
+      //we use eth_accounts because it returns a list of addresses owned by us.
+      const accounts = await ethereum.request({ method: 'eth_accounts' });
+      //We take the first address in the array of addresses and display it
+      getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
+
+      const eth_address = accounts[0];
+      getassets(eth_address);
+
+
     } catch (error) {
       console.error(error);
     }
@@ -93,7 +104,7 @@ const initialize = () => {
     getAccountsResult.innerHTML = accounts[0] || 'Not able to get accounts';
 
     const eth_address = accounts[0];
-    $(".login-wrapper").addClass( "hide" );
+    // $(".login-wrapper").addClass( "hide" );
     getassets(eth_address);
   });
 
@@ -136,6 +147,9 @@ const initialize = () => {
             traits[trait_type]=value;
           }
           console.log(traits);
+
+          $("#beast-select").prepend('<div class="" id="'+token_id+'"><img src="'+image+'" width=100>'+token_id+'</div>');
+
 
           var strength = traits["Strength"];
           var hp = traits["Endurance"]*10;

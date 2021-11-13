@@ -7238,6 +7238,12 @@ strong {
   width: 100%;
   margin-top: 20px;
 }
+.login-wrapper .beast-selection {
+  margin-top: 24px;
+}
+.login-wrapper .beast-selection p {
+  margin-bottom: 0px;
+}
 /*---game-wrapper---*/
 .game-wrapper {
   background: url(../images/bg_game.png);

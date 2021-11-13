@@ -40,6 +40,8 @@ const app = Vue.createApp({
   },
   methods: {
     startGame(){
+      this.isDisabled = true
+      this.yourID = event.target.id
       console.log(this.yourID.length)
       if(this.yourID.length == 4){
         this.startButton = 'LOADING..'
@@ -74,6 +76,7 @@ const app = Vue.createApp({
       this.yourHP = (this.currentHP/this.maxHP)*100
       console.log("Your HP = " + this.currentHP + "[" + this.yourHP +"]%")
 
+      this.isDisabled = false
       this.finishLogin = true
     },
     getNewEnemy(){

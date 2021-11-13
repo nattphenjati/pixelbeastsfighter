@@ -1,0 +1,331 @@
+/*
+To compile:
+0.  Visit https://github.com/jonycheung/deadsimple-less-watch-compiler
+1.  Open Terminal
+2.  Type this code at the project folder:
+    less-watch-compiler less css
+*/
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "../bower_components/font-awesome/css/font-awesome.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "_variables.less";
+@import "_mixins.less";
+
+
+
+/*---General Setting---*/
+html{
+  height: 100%;
+}
+body{
+  color: #ffffff;
+  font-family: @font-primary;
+  background: #000000;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+h1{
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h2{
+  font-size: 18px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-shadow: 2px 2px 0px #000000;
+}
+h3{
+  font-size: 16px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+strong{
+  color:#FFDF00;
+  font-weight: normal;
+}
+.clear{
+  clear: both;
+}
+.hide{
+  display: none;
+}
+
+/*---login-wrapper---*/
+.login-wrapper{
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: 9;
+  background: #000000;
+  height: 624px;
+  width: 375px;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  transform: translate(50%, -50%);
+  padding: 80px 40px 0px 40px;
+  h1{
+    line-height: 30px;
+    margin-bottom: 24px;
+  }
+  border: 3px solid #ffffff;
+  input{
+    width: 100%;
+    text-align: center;
+    color: #000000;
+    padding: 10px;
+    margin-top: 60px;
+  }
+  p{
+    font-size: 12px;
+  }
+  button{
+    width: 100%;
+    margin-top: 16px;
+  }
+  .logo-image{
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    border: 4px solid #ffffff;
+  }
+  .beast-selection{
+    margin-top: 24px;
+    p{
+      margin-bottom: 0px;
+    }
+  }
+  .loading{
+    .btn-primary{
+      .button-variant(#777777, #222222, #ffffff);
+      cursor: not-allowed;
+    }
+  }
+}
+
+/*---game-wrapper---*/
+.game-wrapper{
+  background: url(../images/bg_game.png);
+  background-position: right top;
+  background-size: contain;
+  height: 624px;
+  width: 375px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-align: left;
+  overflow: hidden;
+  .win-counter{
+    text-align: center;
+    background: #17262C;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 7px;
+  }
+}
+/*---Section:Players---*/
+.players{
+  color: #000000;
+  .player{
+    padding-top: 20px;
+    float:left;
+    .player-image{
+      float: left;
+      width: 148px;
+      height: 148px;
+      position: relative;
+      .img-frame{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
+      .img-player{
+        position: absolute;
+        width: 124px;
+        height: 124px;
+        z-index: 1;
+        top: 12px;
+        left: 12px;
+      }
+    }
+    .stat_bar{
+      background-image: url(../images/stat_bar.svg);
+      display: block;
+      float: right;
+      width: 210px;
+      height: 56px;
+      margin-top: 6px;
+      padding-top: 10px;
+      padding-left: 48px;
+      color: #ffffff;
+      font-size: 11px;
+      span{
+        margin-left: 4px;
+      }
+    }
+    .enemy-image{
+      float: right;
+      width: 100px;
+      height: 100px;
+      position: relative;
+      margin-left: 16px;
+      margin-top: -16px;
+      .img-frame{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+      }
+      .img-player{
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 1;
+        width: 76px;
+        height: 76px;
+      }
+    }
+    .enemy_stat_bar{
+      background-image: url(../images/enemy_stat_bar.svg);
+      display: block;
+      float: left;
+      width: 245px;
+      height: 56px;
+      margin-top: 6px;
+      padding-top: 10px;
+      padding-left: 20px;
+      color: #FFFFFF;
+      font-size: 11px;
+      span{
+        margin-left: 4px;
+      }
+    }
+    .hp{
+      text-align: left;
+      float: left;
+      margin-bottom: 4px;
+      padding: 4px;
+      width: 140px;
+      height: 16px;
+      display: block;
+      background-image: url(../images/player_hp_bar.svg);
+      .hp-amount{
+        background-image: url(../images/player_hp.svg);
+        height: 8px;
+        width: 100%;
+        display: block;
+      }
+      img{
+        margin-top: 4px;
+        margin-left: 4px;
+        height: 18px;
+      }
+    }
+  }
+  .player-1{
+    margin-left: 12px;
+    h3{
+      margin-top: 24px;
+      margin-right: 44px;
+      float: right;
+    }
+    .hp_label{
+      margin-left: 12px;
+    }
+  }
+  .player-2{
+    h3{
+      font-size: 14px;
+      margin-top: 8px;
+      margin-left: 20px;
+    }
+  }
+  .vs{
+    float:left;
+    margin: 0px 12px;
+    margin-top: 110px;
+  }
+}
+
+/*---Section:Control---*/
+.control{
+  margin: 56px 32px;
+  text-align: center;
+  h2{
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .button{
+    width: 100%;
+    margin-bottom: 18px;
+  }
+}
+
+/*---Button---*/
+.btn-primary {
+  &:extend(.btn all);
+  .button-variant(#ffffff, #000000, #ffffff);
+  border-radius: 0px;
+  box-shadow: 0px 4px 0px #000000;
+  border: 3px solid;
+  padding:10px 0px 8px 0px;
+}
+.btn-primary:hover{
+  .button-variant(#ffffff, #222222, #ffffff);
+  opacity: 1;
+  box-shadow: 0px 4px 0px #000000;
+}
+.btn-primary:disabled{
+  .button-variant(#777777, #222222, #ffffff);
+  opacity: 1;
+  box-shadow: 0px 4px 0px #000000;
+}
+
+/*---Vue Animation--*/
+.get-hit-enter-active {
+  transition: all .05s;
+}
+.get-hit-leave-active {
+  transition: all .05s;
+}
+.get-hit-enter, .get-hit-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(5px);
+  opacity: 0;
+}
+
+
+/*---Console---*/
+.console{
+  z-index: -1;
+  position: absolute;
+  right: 50%;
+  width: 375px;
+  transform: translateX(50%);
+
+  padding-top: 30px;
+  top: 0;
+}
+
+/*---Responsive (Bootstrap Standard)---*/
+/* Only Large devices (LG) */
+@media only screen and (min-width: 1201px) {
+
+}
+/* Only Medium devices (MD) */
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+
+}
+/* Only Small devices (SM) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+
+}
+/* Only Extra Small devices (XS) */
+@media only screen and (max-width: 768px) {
+
+}

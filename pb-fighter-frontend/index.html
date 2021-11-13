@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pixel Beasts Fighter</title>
+    <title>PixelBeasts Fighter</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/extra.css">
@@ -14,15 +14,28 @@
 
     <div id="app">
 
+
       <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
-        <h1>PIXELBEASTS<br>FIGHTER</h1>
-        <input v-model="yourID" placeholder="ENTER 4-DIGITS ID" maxlength="4">
-        <p><strong>{{loginError}}</strong></p>
-        <button class="button btn-primary" v-on:click="startGame()">{{startButton}}</button>
+        <h1><strong>PIXELBEASTS<br>FIGHTER</strong></h1>
+
+        <button class="button btn-primary hide" v-on:click="startGame()">{{startButton}}</button>
+        <div class="beast-selection">
+          <p>SELECT YOUR PIXELBEAST:</p>
+          <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button>
+          <button class="button btn-primary" id="5687" v-on:click="startGame()" :disabled="isDisabled">PB#5678</button>
+        </div>
         <!-- <button class="button btn-primary" id="connectButton" disabled></button>
         <button class="button btn-primary" id="getAccounts">START GAME</button>
         <p class="info-text alert alert-secondary hide">eth_accounts result: <span id="getAccountsResult"></span></p> -->
       </div>
+
+      <!-- MANUAL LOGIN - NO METAMASK -->
+      <!-- <div class="login-wrapper" id="modalLogin" v-show="!finishLogin">
+        <h1>PIXELBEASTS<br>FIGHTER</h1>
+        <input v-model="yourID" placeholder="ENTER 4-DIGITS ID" maxlength="4">
+        <p><strong>{{loginError}}</strong></p>
+        <button class="button btn-primary" v-on:click="startGame()">{{startButton}}</button>
+      </div> -->
 
       <div class="game-wrapper">
         <div class="win-counter">
@@ -77,8 +90,8 @@
           <button class="button btn-primary" v-on:click="getNewEnemy()">{{restartButton}}</button>
         </section>
       </div>
-      <div class="console hide">
-        {{data}} {{yourID.length}}
+      <div class="console">
+        {{yourID}} {{yourID.length}}
       </div>
 
     </div>
