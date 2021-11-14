@@ -134,10 +134,6 @@ const app = Vue.createApp({
       } else{
         console.log("Continue to next round")
         this.roundCounter = this.roundCounter+1
-        // if ((this.currentHP+15) < this.maxHP){
-        //   this.currentHP = this.currentHP+15
-        //   this.yourHP = (this.currentHP/this.maxHP)*100
-        // }
       }
 
       this.controlText = 'What will you do?'
@@ -158,9 +154,9 @@ const app = Vue.createApp({
       console.log("current Enemy HP = " + this.enemyCurrentHP + "[" + this.enemyHP +"]%")
       this.isDisabled = true
       if (this.enemyHP <= 0){
-        this.controlText = 'You Win!'
+        this.controlText = 'You Win! Pick One..'
         this.youWin = true
-        this.isDisabled = true
+        this.isDisabled = false
         this.enemyCurrentHP = 0
         this.enemyPicture = 'images/player_ko.svg'
         this.restartButton = 'NEXT ROUND'
@@ -203,6 +199,26 @@ const app = Vue.createApp({
         this.yourPicture = 'images/player_ko.svg'
         console.log("You Lose")
       }
+    },
+    rewardHeal(){
+      console.log("Heal Reward")
+      this.currentHP = this.currentHP+20
+      this.yourHP = (this.currentHP/this.maxHP)*100
+      this.isDisabled = true
+      this.getNewEnemy()
+    },
+    rewardCharge(){
+      console.log("Charge Reward")
+      this.xATK = "[X2]"
+      this.chargeATK = 2
+      this.isDisabled = true
+      this.getNewEnemy()
+    },
+    rewardAttack(){
+      console.log("Attack Reward")
+      this.maxATK = this.maxATK + 2
+      this.isDisabled = true
+      this.getNewEnemy()
     }
   },
 })

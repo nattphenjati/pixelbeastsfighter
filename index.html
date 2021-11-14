@@ -23,11 +23,11 @@
         <div class="beast-selection">
           <p id="login-message"></p>
           <div id="beast-select" v-on:click="startGame()" :class="{ loading: isLoading }">
-            <!-- <button class="button btn-primary" id="1234" v-on:click="startGame()" :disabled="isDisabled">PB#1234</button> -->
+            <button class="button btn-primary" id="8972" v-on:click="startGame()" :disabled="isDisabled">PB#8972</button>
           </div>
         </div>
         <div class="version">
-          V.1.0
+          V.1.1
         </div>
       </div>
 
@@ -79,9 +79,13 @@
 
         <section class="control">
           <h2>{{controlText}}</h2>
-          <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled">ATTACK<strong>{{xATK}}</strong></button>
-          <button class="button btn-primary" v-on:click="beastCharge()" :disabled="isDisabled">CHARGE</button>
-          <button class="button btn-primary" v-on:click="getNewEnemy()">{{restartButton}}</button>
+          <button class="button btn-primary" v-on:click="beastAttack()" :disabled="isDisabled" v-if="!youWin">ATTACK<strong>{{xATK}}</strong></button>
+          <button class="button btn-primary" v-on:click="beastCharge()" :disabled="isDisabled" v-if="!youWin">CHARGE</button>
+          <button class="button btn-primary" v-on:click="getNewEnemy()" v-if="!youWin">{{restartButton}}</button>
+
+          <button class="button btn-primary" v-on:click="rewardHeal()" :disabled="isDisabled" v-if="youWin">HEAL <strong>[20HP]</strong></button>
+          <button class="button btn-primary" v-on:click="rewardCharge()" :disabled="isDisabled" v-if="youWin">CHARGE <strong>[X2]</strong></button>
+          <button class="button btn-primary" v-on:click="rewardAttack()" :disabled="isDisabled" v-if="youWin">ATTACK <strong>[+2]</strong></button>
         </section>
       </div>
       <div class="console hide">
